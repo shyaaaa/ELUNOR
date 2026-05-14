@@ -19,66 +19,77 @@ st.set_page_config(
 st.markdown("""
 <style>
 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500&display=swap');
+
 .stApp{
-    background-color:#FFF8FB;
+    background-color:#F8F3F0;
     color:#2B2B2B;
 }
 
 section[data-testid="stSidebar"]{
-    background-color:#FFF1F5;
-    border-right:1px solid rgba(0,0,0,0.05);
+    background-color:#F3ECE8;
+    border-right:1px solid rgba(0,0,0,0.04);
 }
 
 h1,h2,h3{
-    color:#B76E79;
+    color:#6E4B4B;
+    font-family:'Cormorant Garamond', serif;
+    letter-spacing:0.5px;
 }
 
-.hero-text{
-    color:#777777;
-    font-size:18px;
-    margin-bottom:30px;
+p, label, div{
+    font-family:'Inter', sans-serif;
 }
 
 .card{
-    background:white;
-    padding:30px;
-    border-radius:24px;
-    box-shadow:0 4px 20px rgba(0,0,0,0.05);
+    background:#FCF8F6;
+    padding:35px;
+    border-radius:28px;
+    border:1px solid rgba(0,0,0,0.05);
+    box-shadow:0 2px 12px rgba(0,0,0,0.03);
     text-align:center;
 }
 
 .number{
-    font-size:42px;
-    font-weight:bold;
-    color:#B76E79;
+    font-size:58px;
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    color:#5E4A47;
 }
 
 .label{
-    color:#777777;
+    color:#8A7B75;
     margin-top:10px;
+    font-size:15px;
+    letter-spacing:0.5px;
 }
 
 .insight-box{
-    background:linear-gradient(
-        135deg,
-        #FFE4EC,
-        #FFF7FA
-    );
-
-    padding:25px;
-    border-radius:24px;
-
-    box-shadow:0 4px 20px rgba(0,0,0,0.04);
-
-    color:#555555;
-    line-height:1.7;
+    background:#FCF8F6;
+    padding:40px;
+    border-radius:28px;
+    border:1px solid rgba(0,0,0,0.05);
+    color:#5E5552;
+    line-height:1.9;
+    font-size:17px;
 }
 
 div[data-testid="stMetric"]{
-    background:white;
-    padding:15px;
-    border-radius:18px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.04);
+    background:transparent;
+    box-shadow:none;
+    border:none;
+}
+
+.stTextInput input{
+    border-radius:18px !important;
+    border:1px solid rgba(0,0,0,0.08) !important;
+    background:#FCF8F6 !important;
+    padding:14px !important;
+}
+
+.stSelectbox div[data-baseweb="select"]{
+    border-radius:18px !important;
+    background:#FCF8F6 !important;
 }
 
 </style>
@@ -96,19 +107,34 @@ df = pd.read_csv(
 # SIDEBAR
 # ==================================================
 
-st.sidebar.title("Elunor")
+st.sidebar.markdown("""
+<h1 style="
+font-family:'Cormorant Garamond', serif;
+color:#4E3B38;
+font-size:42px;
+margin-bottom:0;
+">
+ELUNOR
+</h1>
+""", unsafe_allow_html=True)
 
-st.sidebar.markdown(
-    "Beauty Intelligence Platform"
-)
+st.sidebar.markdown("""
+<p style="
+color:#7D6B66;
+font-size:15px;
+margin-top:-10px;
+">
+Curated beauty intelligence,
+powered by AI.
+</p>
+""", unsafe_allow_html=True)
 
 st.sidebar.markdown("---")
 
 st.sidebar.info("""
-Explore beauty product trends,
-consumer behavior,
-pricing intelligence,
-and product performance.
+Luxury beauty analytics,
+consumer insights,
+and AI-driven recommendations.
 """)
 
 # ==================================================
@@ -116,30 +142,49 @@ and product performance.
 # ==================================================
 
 st.markdown("""
+<div style='padding-top:60px; padding-bottom:40px;'>
+
 <h1 style='
-text-align: center;
-color: #B03060;
-font-size: 72px;
-margin-bottom: 0px;
-font-weight: 700;
-font-family: Arial;
+text-align:center;
+font-size:96px;
+font-family:"Cormorant Garamond", serif;
+font-weight:600;
+color:#4E3B38;
+letter-spacing:1px;
+margin-bottom:0;
 '>
-Elunor
+ELUNOR
 </h1>
-""", unsafe_allow_html=True)
 
-st.markdown("""
 <p style='
-text-align: center;
-color: #C06C84;
-font-size: 20px;
-margin-top: -10px;
-font-family: Arial;
+text-align:center;
+font-size:20px;
+font-family:Inter;
+font-weight:300;
+color:#7D6B66;
+margin-top:-8px;
+letter-spacing:1px;
 '>
-Beauty Intelligence, Reimagined
+Beauty, personalized by AI.
 </p>
+
+</div>
 """, unsafe_allow_html=True)
 
+# ==================================================
+# HERO IMAGE
+# ==================================================
+
+st.image(
+    "https://www.mediainfoline.com/wp-content/uploads/2021/11/kaybeauty_2yrs.jpg",
+    use_container_width=True
+)
+
+# ==================================================
+# SPACING
+# ==================================================
+
+st.markdown("<div style='height:80px'></div>", unsafe_allow_html=True)
 
 # ==================================================
 # KPI CARDS
@@ -151,14 +196,14 @@ with col1:
     st.markdown(f"""
     <div class="card">
         <div class="number">{len(df)}</div>
-        <div class="label">Total Products</div>
+        <div class="label">Products</div>
     </div>
     """, unsafe_allow_html=True)
 
 with col2:
     st.markdown(f"""
     <div class="card">
-        <div class="number">{df['brand_name'].nunique()}</div>
+        <div class="number">{df['BRAND NAME'].nunique()}</div>
         <div class="label">Brands</div>
     </div>
     """, unsafe_allow_html=True)
@@ -166,7 +211,7 @@ with col2:
 with col3:
     st.markdown(f"""
     <div class="card">
-        <div class="number">{round(df['rating'].mean(),2)}</div>
+        <div class="number">{round(df['RATING'].mean(),2)}</div>
         <div class="label">Average Rating</div>
     </div>
     """, unsafe_allow_html=True)
@@ -175,13 +220,20 @@ with col3:
 # SPACING
 # ==================================================
 
-st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("<div style='height:100px'></div>", unsafe_allow_html=True)
 
 # ==================================================
-# SEARCH SECTION
+# PRODUCT EXPLORER
 # ==================================================
 
-st.markdown("## Product Explorer")
+st.markdown("""
+<h2 style="
+font-size:52px;
+margin-bottom:20px;
+">
+Product Explorer
+</h2>
+""", unsafe_allow_html=True)
 
 search = st.text_input(
     "Search Product"
@@ -220,31 +272,66 @@ filtered_df = filtered_df[
 
 for index, row in filtered_df.head(8).iterrows():
 
-    st.markdown("### " + str(row["product_name"]))
+    st.markdown(f"""
+    <div style="
+    padding:35px;
+    background:#FCF8F6;
+    border-radius:28px;
+    margin-bottom:24px;
+    border:1px solid rgba(0,0,0,0.05);
+    ">
 
-    st.caption(str(row["brand_name"]))
+    <h3 style="
+    font-family:'Cormorant Garamond', serif;
+    font-size:38px;
+    color:#4E3B38;
+    margin-bottom:6px;
+    ">
+    {row["product_name"]}
+    </h3>
 
-    col1, col2 = st.columns(2)
+    <p style="
+    color:#8A7B75;
+    font-family:Inter;
+    font-size:15px;
+    margin-top:0;
+    letter-spacing:0.3px;
+    ">
+    {row["brand_name"]}
+    </p>
 
-    with col1:
-        st.metric(
-            "Rating",
-            round(row["rating"], 2)
-        )
+    <div style="
+    margin-top:18px;
+    color:#5E5552;
+    font-size:16px;
+    line-height:1.8;
+    ">
+    Rating: {round(row["rating"],2)} ⭐
+    <br>
+    Price: ${row["price_usd"]}
+    </div>
 
-    with col2:
-        st.metric(
-            "Price",
-            f"${row['price_usd']}"
-        )
-
-    st.markdown("---")
+    </div>
+    """, unsafe_allow_html=True)
 
 # ==================================================
-# BRAND CHART
+# SPACING
 # ==================================================
 
-st.markdown("## Brand Performance")
+st.markdown("<div style='height:100px'></div>", unsafe_allow_html=True)
+
+# ==================================================
+# BRAND PERFORMANCE
+# ==================================================
+
+st.markdown("""
+<h2 style="
+font-size:52px;
+margin-bottom:30px;
+">
+Brand Performance
+</h2>
+""", unsafe_allow_html=True)
 
 top_brands = (
     df["brand_name"]
@@ -256,34 +343,57 @@ fig, ax = plt.subplots(figsize=(10,5))
 
 top_brands.plot(
     kind="bar",
-    color="#E6A4B4",
+    color="#D8B7AE",
     ax=ax
 )
 
-ax.set_title("Top Brands")
+ax.set_facecolor("#F8F3F0")
+fig.patch.set_facecolor("#F8F3F0")
 
 ax.spines["top"].set_visible(False)
 ax.spines["right"].set_visible(False)
+ax.spines["left"].set_visible(False)
 
-plt.xticks(rotation=25)
+ax.tick_params(colors="#7D6B66")
+
+ax.set_title(
+    "Top Brands",
+    fontsize=22,
+    color="#5E5552"
+)
+
+plt.xticks(rotation=20)
 
 st.pyplot(fig)
+
+# ==================================================
+# SPACING
+# ==================================================
+
+st.markdown("<div style='height:100px'></div>", unsafe_allow_html=True)
 
 # ==================================================
 # AI INSIGHTS
 # ==================================================
 
-st.markdown("## AI Insights")
+st.markdown("""
+<h2 style="
+font-size:52px;
+margin-bottom:30px;
+">
+AI Insights
+</h2>
+""", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="insight-box">
 
-Skincare products dominate platform inventory
-while premium-priced products maintain stronger
-average customer ratings and engagement.
+Skincare products continue to dominate consumer attention,
+while premium beauty brands maintain stronger engagement
+and higher average customer satisfaction.
 
-Ingredient-focused positioning appears strongly
-correlated with consumer attention and purchasing behavior.
+Ingredient-focused positioning appears highly correlated
+with purchasing behavior, especially within luxury skincare segments.
 
 </div>
 """, unsafe_allow_html=True)
@@ -292,8 +402,15 @@ correlated with consumer attention and purchasing behavior.
 # FOOTER
 # ==================================================
 
-st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown("<div style='height:80px'></div>", unsafe_allow_html=True)
 
-st.caption(
-    "Built using Machine Learning, NLP, and Data Intelligence."
-)
+st.markdown("""
+<p style="
+text-align:center;
+color:#8A7B75;
+font-size:14px;
+letter-spacing:0.5px;
+">
+Built using Machine Learning, NLP, and Beauty Intelligence.
+</p>
+""", unsafe_allow_html=True)
