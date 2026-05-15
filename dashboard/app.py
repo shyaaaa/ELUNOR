@@ -411,6 +411,6 @@ color:#8A7B75;
 font-size:14px;
 letter-spacing:0.5px;
 ">
-Built using Machine Learning, NLP, and Beauty Intelligence.
+Made with ♥ for all :)
 </p>
 """, unsafe_allow_html=True)
