@@ -176,7 +176,7 @@ Beauty, personalized by AI.
 # ==================================================
 
 st.image(
-    "../assets/image.jpg",
+    "assets/image.jpg",
     use_container_width=True
 )
 
