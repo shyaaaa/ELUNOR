@@ -100,7 +100,7 @@ div[data-testid="stMetric"]{
 # ==================================================
 
 df = pd.read_csv(
-    "../data/processed/clean_products.csv"
+    "/data/processed/clean_products.csv"
 )
 
 # ==================================================
