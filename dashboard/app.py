@@ -176,7 +176,7 @@ Beauty, personalized by AI.
 # ==================================================
 
 st.image(
-    "https://www.mediainfoline.com/wp-content/uploads/2021/11/kaybeauty_2yrs.jpg",
+    "../assets/hero.jpg",
     use_container_width=True
 )
 
@@ -203,7 +203,7 @@ with col1:
 with col2:
     st.markdown(f"""
     <div class="card">
-        <div class="number">{df['BRAND NAME'].nunique()}</div>
+        <div class="number">{df['brand_name'].nunique()}</div>
         <div class="label">Brands</div>
     </div>
     """, unsafe_allow_html=True)
@@ -211,7 +211,7 @@ with col2:
 with col3:
     st.markdown(f"""
     <div class="card">
-        <div class="number">{round(df['RATING'].mean(),2)}</div>
+        <div class="number">{round(df['rating'].mean(),2)}</div>
         <div class="label">Average Rating</div>
     </div>
     """, unsafe_allow_html=True)
